@@ -63,7 +63,7 @@ var app  = new Framework7({
 
       copyDatabaseFile('srs.db').then(function () {
         // success! :)
-        this.data.db = window.sqlitePlugin.openDatabase({name: 'srs.db'});
+        app.data.db = window.sqlitePlugin.openDatabase({name: 'srs.db'});
       }).catch(function (err) {
         // error! :(
         console.log(err);
