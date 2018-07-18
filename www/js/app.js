@@ -169,7 +169,7 @@ var ac_share = app.actions.create({
       '</div>'+
     '</div></li></ul></div>',
       onClick: function () {
-        var msg = 'Download aplikasi Sarasamuscaya di Playstore.<br><br>' +
+        var msg = 'Download aplikasi Sarasamuscaya di Playstore.\n\n' +
         'https://play.google.com/store/apps/details?id=com.app.sarasamuscaya';
         window.plugins.socialsharing.shareViaWhatsApp(msg, null, null, null, function(e){
           app.dialog.alert('Sharing failed with message: ' + e, 'Sarasamuscaya');
@@ -187,7 +187,7 @@ var ac_share = app.actions.create({
       '</div>'+
     '</div></li></ul></div>',
       onClick: function () {
-        var msg = 'Download aplikasi Sarasamuscaya di Playstore.<br><br>' +
+        var msg = 'Download aplikasi Sarasamuscaya di Playstore.\n\n' +
         'https://play.google.com/store/apps/details?id=com.app.sarasamuscaya';
         window.plugins.socialsharing.shareVia('org.telegram.messenger', msg, null, null, null, null, function(e){
           app.dialog.alert('Sharing failed with message: ' + e, 'Sarasamuscaya');
@@ -205,7 +205,7 @@ var ac_share = app.actions.create({
       '</div>'+
     '</div></li></ul></div>',
       onClick: function () {
-        var msg = 'Download aplikasi Sarasamuscaya di Playstore.<br><br>' +
+        var msg = 'Download aplikasi Sarasamuscaya di Playstore.\n\n' +
         'https://play.google.com/store/apps/details?id=com.app.sarasamuscaya';
         window.plugins.socialsharing.shareViaFacebook(msg, null, null, null, function(e){
           app.dialog.alert('Sharing failed with message: ' + e, 'Sarasamuscaya');
@@ -242,7 +242,7 @@ $$(document).on('backbutton', function (e) {
       app.dialog.confirm('Jika anda menyukai aplikasi ini, mohon luangkan waktu anda untuk memberi rate aplikasi di Play Store.', function () {
         localStorage.setItem('rated', 'Y');
         mainView.router.navigate('https://play.google.com/store/apps/details?id=com.app.sarasamuscaya');
-        navigator.app.exitApp();
+        // navigator.app.exitApp();
       },  function () {
         navigator.app.exitApp();
       });
