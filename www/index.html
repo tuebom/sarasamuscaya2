@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!--
+  Customize this policy to fit your own app's needs. For more guidance, see:
+      https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+  Some notes:
+      * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+      * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+      * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+          * Enable inline JS: add 'unsafe-inline' to default-src
+  -->
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#2196f3">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <title>Sarasamuscaya</title>
+
+  <link rel="stylesheet" href="framework7/css/framework7.min.css">
+  <link rel="stylesheet" href="css/icons.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar"></div>
+    <!-- Left panel with reveal effect when hidden -->
+    <div class="panel panel-left panel-cover">
+      <div class="view view-left">
+        <div class="page">
+          <header>
+              <img class="responsive" src="img/logo.jpg" />
+          </header>
+          <div class="list">
+              <ul class="menu">
+                  <li>
+                      <a href="/favorite/" data-view=".view-main" class="item-link item-content panel-close">
+                          <div class="item-media"><i class="material-icons menu">favorite</i></div>
+                          <div class="item-inner menu">
+                              <div class="item-title menu">Sloka Favorit</div>
+                          </div>
+                      </a>
+                  </li>
+                  <!--<li>
+                      <a href="/settings/" data-view=".view-main" class="item-link item-content panel-close">
+                          <div class="item-media"><i class="material-icons menu">settings</i></div>
+                          <div class="item-inner menu">
+                              <div class="item-title menu">Pengaturan</div>
+                          </div>
+                      </a>
+                  </li>-->
+              </ul>
+          </div>
+          <div class="block-title">App Related</div>
+          <div class="list">
+              <ul class="menu">
+                  <li>
+                      <a href="#" data-view=".view-main" class="item-link item-content panel-close ac-share">
+                          <div class="item-media"><i class="material-icons menu">share</i></div>
+                          <div class="item-inner menu">
+                              <div class="item-title menu">Share Aplikasi</div>
+                          </div>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="https://play.google.com/store/apps/details?id=com.app.sarasamuscaya" data-view=".view-main" class="item-link external item-content panel-close">
+                          <div class="item-media"><i class="material-icons menu">grade</i></div>
+                          <div class="item-inner menu">
+                              <div class="item-title menu">Rate Aplikasi</div>
+                          </div>
+                      </a>
+                  </li>
+                  <!--<li>
+                      <a href="/contact-us/" data-view=".view-main" class="item-link item-content panel-close">
+                          <div class="item-media"><i class="material-icons menu">chat</i></div>
+                          <div class="item-inner menu">
+                              <div class="item-title menu">Hubungi Kami</div>
+                          </div>
+                      </a>
+                  </li>-->
+                  <li>
+                      <a href="https://play.google.com/store/apps/details?pub=Bali Solusi" data-view=".view-main" class="item-link external item-content panel-close">
+                          <div class="item-media"><i class="material-icons menu">android</i></div>
+                          <div class="item-inner menu">
+                              <div class="item-title menu">Aplikasi Lainnya</div>
+                          </div>
+                      </a>
+                  </li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main ios-edges">
+      <!-- Page, data-name contains page name which can be used in callbacks -->
+      <div class="page" data-name="home">
+        <!-- Top Navbar -->
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="left">
+              <a href="#" class="link icon-only panel-open" data-panel="left">
+                <i class="icon f7-icons ios-only">menu</i>
+                <i class="icon material-icons md-only">menu</i>
+              </a>
+            </div>
+            <div class="title sliding">Sarasamuscaya</div>
+            <div class="right">
+              <a href="#" class="link icon-only">
+                <i class="icon f7-icons ios-only">search</i>
+                <i class="icon material-icons md-only">search</i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Scrollable page content-->
+        <div class="page-content">
+          <img class="responsive" src="img/back.jpg" />
+
+          <div class="block">
+              <div class="list no-hairlines-md">
+                <ul>
+                  <li>
+                    <a href="/pengantar/" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Kata Pengantar</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/1/Tujuan Hidup Manusia" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Tujuan Hidup Manusia</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/2/Sumber Kebenaran" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title-row">
+                          <div class="item-title">Sumber Kebenaran</div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/3/Berbuat Baik dan Benar" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Berbuat Baik dan Benar</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/4/Pekerjaan dan Profesi" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Pekerjaan dan Profesi</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/5/Pikiran, Perkataan, Perbuatan" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Pikiran, Perkataan, Perbuatan</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/6/Pikiran" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Pikiran</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/7/Iri Hati" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Iri Hati</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/8/Kesabaran" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Kesabaran</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/9/Amarah" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Amarah</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/10/Tanpa Keyakinan" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Tanpa Keyakinan</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/11/Perkataan" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Perkataan</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/12/Kebenaran" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Kebenaran</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/13/Tidak Menyakiti Mahluk" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Tidak Menyakiti Mahluk</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/14/Mencuri" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Mencuri</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/15/Memperkosa" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Memperkosa</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/16/Kesusilaan" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Kesusilaan</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/17/Sedekah" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Sedekah</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/18/Anak, Orang Tua dan Guru" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Anak, Orang Tua dan Guru</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/19/Pengendalian Diri" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Pengendalian Diri</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/20/Materi" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Materi</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/21/Kesenangan" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Kesenangan</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/22/Perjalanan ke Tempat Suci" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Perjalanan ke Tempat Suci</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/23/Kemiskinan" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Kemiskinan</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/24/Pergaulan" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Pergaulan</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/25/Pergaulan dengan Orang Baik" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Pergaulan dengan Orang Baik</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/26/Pergaulan dengan Penjahat" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Pergaulan dengan Penjahat</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/27/Hukum Sebab Akibat" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Hukum Sebab Akibat</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/28/Kematian" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Kematian</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/29/Roh Leluhur" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Roh Leluhur</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/30/Kebodohan" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Kebodohan</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/31/Nafsu Seksual" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Nafsu Seksual</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/32/Hawa Nafsu dan Amarah" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Hawa Nafsu dan Amarah</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/33/Keterikatan" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Keterikatan</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/bab/34/Pembebasan" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Pembebasan</div>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+          </div>
+
+        </div> <!-- class="page-content" -->
+      </div>
+    </div>
+
+    <!-- Popup -->
+    <div class="popup" id="my-popup">
+      <div class="view">
+        <div class="page">
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="title">Popup</div>
+              <div class="right">
+                <a href="#" class="link popup-close">Close</a>
+              </div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="block">
+              <p>Popup content goes here.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Cordova -->
+  <!--
+  <script src="cordova.js"></script>
+  -->
+
+  <!-- Framework7 library -->
+  <script src="framework7/js/framework7.min.js"></script>
+
+  <!-- App routes -->
+  <script src="js/routes.js"></script>
+
+  <!-- Your custom app scripts -->
+  <script src="js/app.js"></script>
+</body>
+</html>
