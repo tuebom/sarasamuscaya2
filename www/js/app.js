@@ -235,11 +235,15 @@ $$(document).on('backbutton', function (e) {
   e.preventDefault();
   // for example, based on what and where view you have
   if (app.views.main.router.url == '/') {
+    
     var isRated = localStorage.getItem('rated');
+    
     if (isRated !== 'Y') {
       app.dialog.confirm('Jika anda menyukai aplikasi ini, mohon luangkan waktu anda untuk memberi rate aplikasi di Play Store.', function () {
         localStorage.setItem('rated', 'Y');
         mainView.router.navigate('https://play.google.com/store/apps/details?id=com.app.sarasamuscaya');
+        navigator.app.exitApp();
+      },  function () {
         navigator.app.exitApp();
       });
     } else {
