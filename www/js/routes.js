@@ -23,6 +23,7 @@ routes = [
       app.preloader.show();
       
       var db = app.data.db;
+      
       var sloka = [];
       
       // var data = {
