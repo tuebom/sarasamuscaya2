@@ -43,7 +43,7 @@
   <plugin name="cordova-plugin-console" source="npm" />
   <plugin name="cordova-plugin-device" source="npm" />
   <plugin name="cordova-plugin-dialogs" source="npm" />
-  <plugin name="cordova-plugin-file" spec="~6.3.0" />
+  <plugin name="cordova-plugin-file" source="npm" spec="~6.3.0" />
   <plugin name="cordova-plugin-sqlite-2" spec="~1.0.4" />
   <plugin name="cordova-plugin-inappbrowser" source="npm" />
   <plugin name="cordova-plugin-network-information" source="npm" />
