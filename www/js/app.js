@@ -102,7 +102,7 @@ var app  = new Framework7({
         app.dialog.alert(data.message, 'Sarasamuscaya');
       }); */
       
-      //*
+      //
       //run admob
       if( /(android)/i.test(navigator.userAgent) ) {
         this.data.admobid = { // for Android
@@ -135,7 +135,7 @@ var app  = new Framework7({
           bgColor: 'white'
         } );
       }
-      //*/
+      //
     },     
   },
   // App routes

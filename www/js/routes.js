@@ -97,6 +97,16 @@ routes = [
             // app.dialog.alert('select error: ' + error.message);
           // });      
         // }
+        var swiper = app.swiper.create('.swiper-container', {
+            speed: 400,
+            //slidesPerView: auto,
+            loop: true,
+            //autoHeight: true,
+            shortSwipes: false,
+            longSwipes: false,
+            //effect:'fade'
+            //spaceBetween: 100
+        });        
       
         // to do
         $$('i.material-icons.fav').on('click', function (e) {//Changing color icons onclick
@@ -204,7 +214,7 @@ routes = [
     }
   },
   {
-    path: '/favorite/',
+    path: '/favorit/',
     async: function (routeTo, routeFrom, resolve, reject) {
       // Router instance
       var router = this;
