@@ -102,7 +102,7 @@ var app  = new Framework7({
         app.dialog.alert(data.message, 'Sarasamuscaya');
       }); */
       
-      /*
+      //*
       //run admob
       if( /(android)/i.test(navigator.userAgent) ) {
         this.data.admobid = { // for Android
@@ -129,7 +129,7 @@ var app  = new Framework7({
           adSize: 'SMART_BANNER',
           position: AdMob.AD_POSITION.BOTTOM_CENTER,
           isTesting: true, // TODO: remove this line when release
-          // autoShow: false,
+          autoShow: false,
           overlap: false,
           // offsetTopBar: false,
           bgColor: 'white'

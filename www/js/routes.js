@@ -60,8 +60,11 @@ routes = [
       if (db) {
         db.transaction(function(tx) {
           tx.executeSql('select bab, ayat, sloka, indo, favorit from book where bab = ? order by ayat;', [bab], function(ignored, res) {
-            // sloka = JSON.parse(res.rows);
-            sloka = res.rows;
+            
+            for (var i = 0; i < res.rows.length; i++) {
+              sloka.push({bab: res.rows.item(i).bab, ayat: res.rows.item(i).ayat, indo: res.rows.item(i).indo, favorit: res.rows.item(i).favorit});
+            }
+            // sloka = res.rows;
             // app.dialog.alert('res.rows.length: ' + res.rows.length);
           });
         }, function(error) {
@@ -83,19 +86,17 @@ routes = [
     on: {
       pageInit: function (event, page) {
 
-        var db = app.data.db;
-        if (db) {
-          // app.dialog.alert('Db not defined!');
-          db.transaction(function(tx) {
-            tx.executeSql('select count(*) as total from book;', [], function(ignored, res) {
-              // sloka = JSON.parse(res.rows);
-              // sloka = res.rows;
-              app.dialog.alert('RECORD COUNT: ' + res.rows.item(0).total);
-            });
-          }, function(error) {
-            app.dialog.alert('select error: ' + error.message);
-          });      
-        }
+        // var db = app.data.db;
+        // if (db) {
+          // // app.dialog.alert('Db not defined!');
+          // db.transaction(function(tx) {
+            // tx.executeSql('select count(*) as total from book;', [], function(ignored, res) {
+              // app.dialog.alert('RECORD COUNT: ' + res.rows.item(0).total);
+            // });
+          // }, function(error) {
+            // app.dialog.alert('select error: ' + error.message);
+          // });      
+        // }
       
         // to do
         $$('i.material-icons.fav').on('click', function (e) {//Changing color icons onclick
