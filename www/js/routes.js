@@ -47,9 +47,9 @@ routes = [
       if (db) {
         db.transaction(function(tx) {
           tx.executeSql('select ayat, sloka, indo, favorit from book where bab = ? order by ayat;', [bab], function(ignored, res) {
-            // sloka = JSON.parse(res.rows);
-            sloka = res.rows;
-            app.dialog.alert('res.rows.length: ' + res.rows.length);
+            sloka = JSON.parse(res.rows);
+            // sloka = res.rows;
+            // app.dialog.alert('res.rows.length: ' + res.rows.length);
           });
         }, function(error) {
           app.dialog.alert('insert error: ' + error.message);
