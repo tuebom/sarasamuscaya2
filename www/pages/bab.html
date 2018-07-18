@@ -18,13 +18,13 @@
           {{#each data.sloka}}
           <div class="swiper-slide">
             <div class="card">
-               <input type="hidden" class="bab" value="{{bab}}" />
-               <input type="hidden" class="ayat" value="{{ayat}}" />
+               <input type="hidden" class="bab" value="{{this.bab}}" />
+               <input type="hidden" class="ayat" value="{{this.ayat}}" />
                <div class="card-header">
-                  <div class="article-title text-center">Sloka {{ayat}}</div>
+                  <div class="article-title text-center">Sloka {{this.ayat}}</div>
                </div>
                <div class="card-footer">
-                  <div class="intro">{{indo}}</div>
+                  <div class="intro">{{this.indo}}</div>
                </div>
                <div class="card-footer"> 
                 <div class="icon-social"><a href="#" class="link icon-only"><i class="material-icons share art-share">share</i></a></div>
