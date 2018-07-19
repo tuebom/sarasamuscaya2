@@ -25,19 +25,20 @@ routes = [
       var db = app.data.db;
       
       var sloka = [];
+      var message;
       
-      sloka.push(    {
-            bab: 1,
-            ayat: 1,
-            indo: 'Anaknda Janamejaya, segala ajaran tentang Catur Warga (Dharma=kebajikan, Artha=kekayaan, Kama=kesenangan dan Moksa=kebebasan) baikpun sumber, maupun uraian tafsirnya ada di sini; segala yang terdapat di sini akan terdapat dalam sastra lain; yang tidak terdapat di sini juga tidak akan terdapat pada sastra lain.',
-            favorit: 0
-          });
-      sloka.push(    {
-            bab: 1,
-            ayat: 2,
-            indo: 'Manusia adalah satu-satunya mahluk yang dapat melakukan kebajikan pun kejahatan. Terlahir menjadi manusia bertujuan untuk melebur perbuatan-perbuatan jahat ke dalam perbuatan-perbuatan bajik, hingga tidak ada lagi perbuatan-perbuatan jahat yang masih tersisa dalam diri, inilah hakekat menjadi manusia. Hanya dengan menjadi manusia kejahatan itu dapat dilebur dalam kebajikan.',
-            favorit: 1
-          });
+      // sloka.push(    {
+            // bab: 1,
+            // ayat: 1,
+            // indo: 'Anaknda Janamejaya, segala ajaran tentang Catur Warga (Dharma=kebajikan, Artha=kekayaan, Kama=kesenangan dan Moksa=kebebasan) baikpun sumber, maupun uraian tafsirnya ada di sini; segala yang terdapat di sini akan terdapat dalam sastra lain; yang tidak terdapat di sini juga tidak akan terdapat pada sastra lain.',
+            // favorit: 0
+          // });
+      // sloka.push(    {
+            // bab: 1,
+            // ayat: 2,
+            // indo: 'Manusia adalah satu-satunya mahluk yang dapat melakukan kebajikan pun kejahatan. Terlahir menjadi manusia bertujuan untuk melebur perbuatan-perbuatan jahat ke dalam perbuatan-perbuatan bajik, hingga tidak ada lagi perbuatan-perbuatan jahat yang masih tersisa dalam diri, inilah hakekat menjadi manusia. Hanya dengan menjadi manusia kejahatan itu dapat dilebur dalam kebajikan.',
+            // favorit: 1
+          // });
 
         // var data = {
         // title: judul,
@@ -79,12 +80,13 @@ routes = [
             // app.dialog.alert('res.rows.length: ' + res.rows.length);
           });
         }, function(error) {
-          app.dialog.alert('select error: ' + error.message);
+          // app.dialog.alert('select error: ' + error.message);
+          message = error.message;
         });      
       }
       
       var data = {
-        title: judul, sloka: sloka
+        title: judul, msg: message, sloka: sloka
       }
       
       resolve(
@@ -97,17 +99,17 @@ routes = [
     on: {
       pageInit: function (event, page) {
 
-        // var db = app.data.db;
-        // if (db) {
-          // // app.dialog.alert('Db not defined!');
-          // db.transaction(function(tx) {
-            // tx.executeSql('select count(*) as total from book;', [], function(ignored, res) {
-              // app.dialog.alert('RECORD COUNT: ' + res.rows.item(0).total);
-            // });
-          // }, function(error) {
-            // app.dialog.alert('select error: ' + error.message);
-          // });      
-        // }
+        var db = app.data.db;
+        if (db) {
+          // app.dialog.alert('Db not defined!');
+          db.transaction(function(tx) {
+            tx.executeSql('select indo from book where ayat = 1;', [], function(ignored, res) {
+              app.dialog.alert('Sloka 1: ' + res.rows.item(0).indo);
+            });
+          }, function(error) {
+            app.dialog.alert('select error: ' + error.message);
+          });      
+        }
       
         // to do
         $$('i.material-icons.fav').on('click', function (e) {//Changing color icons onclick
@@ -153,7 +155,7 @@ routes = [
                 '</div>'+
               '</div></li></ul></div>',
                 onClick: function () {
-                  var msg = teks + '\n\nSloka ' + ayat;
+                  var msg = teks + '\n\nSarasamuscaya ' + ayat;
                   window.plugins.socialsharing.shareViaWhatsApp(msg, null, null, null, function(e){
                     app.dialog.alert('Sharing failed with message: ' + e, 'Sarasamuscaya');
                   })
@@ -170,7 +172,7 @@ routes = [
                 '</div>'+
               '</div></li></ul></div>',
                 onClick: function () {
-                  var msg = teks + '<br><br>Sloka ' + ayat;
+                  var msg = teks + '\n\nSarasamuscaya ' + ayat;
                   window.plugins.socialsharing.shareVia('org.telegram.messenger', msg, null, null, null, null, function(e){
                     app.dialog.alert('Sharing failed with message: ' + e, 'Sarasamuscaya');
                   })
@@ -187,7 +189,7 @@ routes = [
                 '</div>'+
               '</div></li></ul></div>',
                 onClick: function () {
-                  var msg = teks + '<br><br>Sloka ' + ayat;
+                  var msg = teks + '\n\nSarasamuscaya ' + ayat;
                   window.plugins.socialsharing.shareViaFacebook(msg, null, null, null, function(e){
                     app.dialog.alert('Sharing failed with message: ' + e, 'Sarasamuscaya');
                   })
