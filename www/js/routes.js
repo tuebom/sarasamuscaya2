@@ -14,7 +14,7 @@ routes = [
       var router = this;
 
       // App instance
-      var app = router.app;
+      // var app = router.app;
       var bab = routeTo.params.index;
       var judul = routeTo.params.title;
       // console.log(bab)
