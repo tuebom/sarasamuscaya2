@@ -22,8 +22,7 @@ routes = [
       // Show Preloader
       app.preloader.show();
       
-      var db = app.data.db;
-      
+     
       var sloka = [];
       var message;
       
@@ -57,20 +56,13 @@ routes = [
           // },
         // ]
       // };
-      
-      // var swiper = app.swiper.create('.swiper-container', {
-          // speed: 400,
-          // //slidesPerView: auto,
-          // loop: true,
-          // //autoHeight: true,
-          // shortSwipes: false,
-          // longSwipes: false,
-          // //effect:'fade'
-          // //spaceBetween: 100
-      // });        
 
+      var db = app.data.db;
+      
       if (db) {
+      
         db.transaction(function(tx) {
+          
           tx.executeSql('select bab, ayat, sloka, indo, favorit from book where bab = ? order by ayat;', [bab], function(ignored, res) {
             
             for (var i = 0; i < res.rows.length; i++) {
