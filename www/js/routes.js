@@ -65,10 +65,11 @@ routes = [
           
           tx.executeSql('select bab, ayat, sloka, indo, favorit from book where bab = ? order by ayat;', [bab], function(ignored, res) {
             
-            // for (var i = 0; i < res.rows.length; i++) {
-              // sloka.push({bab: res.rows.item(i).bab, ayat: res.rows.item(i).ayat, indo: res.rows.item(i).indo, favorit: res.rows.item(i).favorit});
-            // }
-            var sloka = res.rows.item;
+            var sloka = [];
+            for (var i = 0; i < res.rows.length; i++) {
+              sloka.push({bab: res.rows.item(i).bab, ayat: res.rows.item(i).ayat, indo: res.rows.item(i).indo, favorit: res.rows.item(i).favorit});
+            }
+            // var sloka = res.rows.item;
             // app.dialog.alert('res.rows.length: ' + res.rows.length);
           });
         }, function(error) {
