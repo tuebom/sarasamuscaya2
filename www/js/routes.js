@@ -73,12 +73,11 @@ routes = [
           });
         }, function(error) {
           // app.dialog.alert('select error: ' + error.message);
-          message = error.message;
         });      
       }
       
       var data = {
-        title: judul, msg: message, sloka: sloka
+        title: judul, sloka: sloka
       }
       
       resolve(
