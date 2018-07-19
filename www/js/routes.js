@@ -72,7 +72,8 @@ routes = [
             // app.dialog.alert('res.rows.length: ' + res.rows.length);
           });
         }, function(error) {
-          // app.dialog.alert('select error: ' + error.message);
+          app.preloader.hide();
+          app.dialog.alert('select error: ' + error.message);
         });      
       }
       
