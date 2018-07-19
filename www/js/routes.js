@@ -23,7 +23,7 @@ routes = [
       app.preloader.show();
       
      
-      // var sloka = [];
+      var sloka = [];
       // var message;
       
       // sloka.push(    {
@@ -65,7 +65,7 @@ routes = [
           
           tx.executeSql('select bab, ayat, sloka, indo, favorit from book where bab = ? order by ayat;', [bab], function(ignored, res) {
             
-            var sloka = [];
+            // var sloka = [];
             for (var i = 0; i < res.rows.length; i++) {
               sloka.push({bab: res.rows.item(i).bab, ayat: res.rows.item(i).ayat, indo: res.rows.item(i).indo, favorit: res.rows.item(i).favorit});
             }
@@ -93,6 +93,10 @@ routes = [
     on: {
       pageInit: function (event, page) {
 
+        var swiper = app.swiper.create('.swiper-container', {
+            speed: 400,
+        });
+        
         var db = app.data.db;
         if (db) {
           // app.dialog.alert('Db not defined!');
