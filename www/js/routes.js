@@ -95,11 +95,15 @@ routes = [
     on: {
       pageInit: function (event, page) {
 
-        // var swiper = app.swiper.create('.swiper-container', {
-            // speed: 400,
-        // });
+        //var bab = this.route.params.anu;
+        //console.log('bab: ', bab)
+        //app.dialog.alert('bab: ' + bab);
+
+        /*var swiper = app.swiper.create('.swiper-container', {
+            speed: 400,
+        });*/
         
-        // var db = app.data.db;
+        var db = app.data.db;
         // if (db) {
           // // app.dialog.alert('Db not defined!');
           // db.transaction(function(tx) {
