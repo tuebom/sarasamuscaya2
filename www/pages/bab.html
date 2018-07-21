@@ -23,6 +23,7 @@
 <script>
   return {
     // Component Methods
+    /*
     methods: {
       shareArticle: function () {
         //var self = this;
@@ -105,7 +106,9 @@
       },
       toggleFav: function () {
           
-          this.$el.toggleClass('color-change');
+          var self = this;
+          var $ = self.$$;
+          $(self.$el).toggleClass('color-change');
           
           var db = this.$app.data.db;
           if (db) {
@@ -125,7 +128,7 @@
           }
       
       }
-    },
+    },*/
     // Page Events
     on: {
       pageInit: function(e, page) {
@@ -160,8 +163,8 @@
                           html += '<div class="intro">' + res.rows.item(i).indo + '</div>'
                        html += '</div>'
                        html += '<div class="card-footer">'
-                        html += '<div class="icon-social"><a href="#" class="link icon-only" @click="shareArticle"><i class="material-icons share">share</i></a></div>'
-                        html += '<div class="icon-social"><a href="#" class="link icon-only" @click="toggleFav"><i class="material-icons fav'
+                        html += '<div class="icon-social"><a href="#" class="link icon-only"><i class="material-icons share">share</i></a></div>'
+                        html += '<div class="icon-social"><a href="#" class="link icon-only"><i class="material-icons fav'
                         if (res.rows.item(i).favorit === '1') {
                           html += ' color-change'
                         }
