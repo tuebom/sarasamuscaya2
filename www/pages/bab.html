@@ -52,8 +52,8 @@
                 //return sloka;
               });
             }, function(error) {
-              app.preloader.hide();
-              app.dialog.alert('select error: ' + error.message);
+              //app.preloader.hide();
+              //app.dialog.alert('select error: ' + error.message);
             });
             //return sloka;
             
@@ -92,7 +92,11 @@
         console.log('pageMounted', page);
       },
       pageInit: function(e, page) {
-        var swiper = app.swiper.get('.swiper-container');
+        var swiper = app.swiper.create('.swiper-container', {
+          speed: 400,
+          spaceBetween: 0
+        });
+
         swiper.appendSlide([
    '<div class="swiper-slide">Slide 1</div>',
    '<div class="swiper-slide">Slide 2</div>'
