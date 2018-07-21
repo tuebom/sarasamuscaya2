@@ -61,81 +61,14 @@ var app  = new Framework7({
         });
       }
 
-      copyDatabaseFile('srs.db').then(function () {
-        // success! :)
-        app.data.db = window.sqlitePlugin.openDatabase({name: 'srs.db'});
-      }).catch(function (err) {
-        // error! :(
-        console.log(err);
-      });
+      // copyDatabaseFile('srs.db').then(function () {
+        // // success! :)
+        // app.data.db = window.sqlitePlugin.openDatabase({name: 'srs.db'});
+      // }).catch(function (err) {
+        // // error! :(
+        // console.log(err);
+      // });
       
-
-      /*this.data.push = PushNotification.init({
-        "android": {
-            "senderID": "597497239727"
-        },
-        "ios": {
-            "sound": true,
-            "vibration": true,
-            "badge": true
-        },
-        "windows": {}
-      });
-
-      var push = this.data.push;
-
-      push.on('registration', function(data) {
-
-        var oldRegId = localStorage.getItem('RegId');
-        if (oldRegId !== data.registrationId) {
-            // Save new registration ID
-            localStorage.setItem('RegId', data.registrationId);
-            // Post registrationId to your app server as the value has changed
-            // app.dialog.alert('Registrasi Id berhasil!');
-        }
-
-      });
-
-      push.on('notification', function(data) {
-        
-        // show message
-        app.dialog.alert(data.message, 'Sarasamuscaya');
-      }); */
-      
-      //*
-      //run admob
-      if( /(android)/i.test(navigator.userAgent) ) {
-        this.data.admobid = { // for Android
-          banner: 'ca-app-pub-8720755312345684/2294562251',
-          interstitial: 'ca-app-pub-xxxxxxxxxxxxx/oooooooooooo'
-        };
-      }/* else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {
-        this.data.admobid = { // for iOS
-          banner: 'ca-app-pub-xxxxxxxxxxxxx/oooooooooooo',
-          interstitial: 'ca-app-pub-xxxxxxxxxxxxx/oooooooooooo'
-        };
-      } else {
-        this.data.admobid = { // for Windows Phone
-          banner: 'ca-app-pub-xxxxxxxxxxxxx/oooooooooooo',
-          interstitial: 'ca-app-pub-xxxxxxxxxxxxx/oooooooooooo'
-        };
-      }*/
-     
-      if ( AdMob ) {
-     
-        // this will create a banner on startup
-        AdMob.createBanner( {
-          adId: this.data.admobid.banner,
-          adSize: 'SMART_BANNER',
-          position: AdMob.AD_POSITION.BOTTOM_CENTER,
-          isTesting: true, // TODO: remove this line when release
-          autoShow: false,
-          overlap: false,
-          // offsetTopBar: false,
-          bgColor: 'white'
-        } );
-      }
-      //*/
     },     
   },
   // App routes
