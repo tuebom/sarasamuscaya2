@@ -35,7 +35,7 @@
   <preference name="phonegap-version"       value="cli-7.1.0" />
   <!--<preference name="android-build-tool" value="gradle" />-->
   
-    <!-- Plugins -->
+  <!-- Plugins -->
   <plugin name="cordova-plugin-admobpro" source="npm" />
   <!--<plugin name="cordova-plugin-splashscreen" source="npm" />-->
   <plugin name="cordova-plugin-x-socialsharing" source="npm" />

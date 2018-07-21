@@ -8,7 +8,9 @@ routes = [
     url: './pages/pengantar.html',
   },
   {
-    path: '/bab/:index/:title',
+    path: '/bab/:anu/:title',
+    componentUrl: './pages/bab.html',
+    /*
     async: function (routeTo, routeFrom, resolve, reject) {
       // Router instance
       var router = this;
@@ -26,18 +28,18 @@ routes = [
       var sloka = [];
       // var message;
       
-      // sloka.push(    {
-            // bab: 1,
-            // ayat: 1,
-            // indo: 'Anaknda Janamejaya, segala ajaran tentang Catur Warga (Dharma=kebajikan, Artha=kekayaan, Kama=kesenangan dan Moksa=kebebasan) baikpun sumber, maupun uraian tafsirnya ada di sini; segala yang terdapat di sini akan terdapat dalam sastra lain; yang tidak terdapat di sini juga tidak akan terdapat pada sastra lain.',
-            // favorit: 0
-          // });
-      // sloka.push(    {
-            // bab: 1,
-            // ayat: 2,
-            // indo: 'Manusia adalah satu-satunya mahluk yang dapat melakukan kebajikan pun kejahatan. Terlahir menjadi manusia bertujuan untuk melebur perbuatan-perbuatan jahat ke dalam perbuatan-perbuatan bajik, hingga tidak ada lagi perbuatan-perbuatan jahat yang masih tersisa dalam diri, inilah hakekat menjadi manusia. Hanya dengan menjadi manusia kejahatan itu dapat dilebur dalam kebajikan.',
-            // favorit: 1
-          // });
+      sloka.push(    {
+            bab: 1,
+            ayat: 1,
+            indo: 'Anaknda Janamejaya, segala ajaran tentang Catur Warga (Dharma=kebajikan, Artha=kekayaan, Kama=kesenangan dan Moksa=kebebasan) baikpun sumber, maupun uraian tafsirnya ada di sini; segala yang terdapat di sini akan terdapat dalam sastra lain; yang tidak terdapat di sini juga tidak akan terdapat pada sastra lain.',
+            favorit: 0
+          });
+      sloka.push(    {
+            bab: 1,
+            ayat: 2,
+            indo: 'Manusia adalah satu-satunya mahluk yang dapat melakukan kebajikan pun kejahatan. Terlahir menjadi manusia bertujuan untuk melebur perbuatan-perbuatan jahat ke dalam perbuatan-perbuatan bajik, hingga tidak ada lagi perbuatan-perbuatan jahat yang masih tersisa dalam diri, inilah hakekat menjadi manusia. Hanya dengan menjadi manusia kejahatan itu dapat dilebur dalam kebajikan.',
+            favorit: 1
+          });
 
         // var data = {
         // title: judul,
@@ -88,14 +90,14 @@ routes = [
         { componentUrl: './pages/bab.html' },
         { context: { data: data } }
       );
-    },
+    }, */
     
     on: {
       pageInit: function (event, page) {
 
-        var swiper = app.swiper.create('.swiper-container', {
-            speed: 400,
-        });
+        // var swiper = app.swiper.create('.swiper-container', {
+            // speed: 400,
+        // });
         
         var db = app.data.db;
         if (db) {

@@ -102,14 +102,14 @@ var app  = new Framework7({
         app.dialog.alert(data.message, 'Sarasamuscaya');
       }); */
       
-      /*
+      //*
       //run admob
       if( /(android)/i.test(navigator.userAgent) ) {
         this.data.admobid = { // for Android
           banner: 'ca-app-pub-8720755312345684/2294562251',
           interstitial: 'ca-app-pub-xxxxxxxxxxxxx/oooooooooooo'
         };
-      } else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {
+      }/* else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {
         this.data.admobid = { // for iOS
           banner: 'ca-app-pub-xxxxxxxxxxxxx/oooooooooooo',
           interstitial: 'ca-app-pub-xxxxxxxxxxxxx/oooooooooooo'
@@ -119,7 +119,7 @@ var app  = new Framework7({
           banner: 'ca-app-pub-xxxxxxxxxxxxx/oooooooooooo',
           interstitial: 'ca-app-pub-xxxxxxxxxxxxx/oooooooooooo'
         };
-      }
+      }*/
      
       if ( AdMob ) {
      
