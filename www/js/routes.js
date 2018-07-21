@@ -99,17 +99,17 @@ routes = [
             // speed: 400,
         // });
         
-        var db = app.data.db;
-        if (db) {
-          // app.dialog.alert('Db not defined!');
-          db.transaction(function(tx) {
-            tx.executeSql('select indo from book where ayat = 511;', [], function(ignored, res) {
-              app.dialog.alert('Sloka 1: ' + res.rows.item(0).indo);
-            });
-          }, function(error) {
-            app.dialog.alert('select error: ' + error.message);
-          });      
-        }
+        // var db = app.data.db;
+        // if (db) {
+          // // app.dialog.alert('Db not defined!');
+          // db.transaction(function(tx) {
+            // tx.executeSql('select indo from book where ayat = 511;', [], function(ignored, res) {
+              // app.dialog.alert('Sloka 1: ' + res.rows.item(0).indo);
+            // });
+          // }, function(error) {
+            // app.dialog.alert('select error: ' + error.message);
+          // });      
+        // }
       
         // to do
         $$('i.material-icons.fav').on('click', function (e) {//Changing color icons onclick

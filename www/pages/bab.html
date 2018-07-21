@@ -57,17 +57,21 @@
               tx.executeSql('select bab, ayat, sloka, indo, favorit from book where bab = ? order by ayat;', [bab], function(ignored, res) {
                 
                 var sloka = [];
-                sloka.push({bab: res.rows.item(0).bab, ayat: res.rows.item(0).ayat, indo: res.rows.item(0).indo, favorit: res.rows.item(0).favorit});
-                app.dialog.alert('length of sloka: ' + res.rows.length);
-                //for (var i = 0; i < res.rows.length; i++) {
-                //  sloka.push({bab: res.rows.item(i).bab, ayat: res.rows.item(i).ayat, indo: res.rows.item(i).indo, favorit: res.rows.item(i).favorit});
-                //}
-                return sloka;
+                //sloka.push({bab: res.rows.item(0).bab, ayat: res.rows.item(0).ayat, indo: res.rows.item(0).indo, favorit: res.rows.item(0).favorit});
+                app.dialog.alert('first sloka: ' + JSON.stringify(res.rows.item(0)));
+                
+                //app.dialog.alert('length of sloka: ' + res.rows.length);
+                
+                for (var i = 0; i < res.rows.length; i++) {
+                  sloka.push({bab: res.rows.item(i).bab, ayat: res.rows.item(i).ayat, indo: res.rows.item(i).indo, favorit: res.rows.item(i).favorit});
+                }
+                //return sloka;
               });
             }, function(error) {
               app.preloader.hide();
               app.dialog.alert('select error: ' + error.message);
             });
+            return sloka;
             
           } else {
           
