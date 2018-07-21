@@ -63,8 +63,8 @@
                 //app.dialog.alert('length of sloka: ' + res.rows.length);
                 
                 for (var i = 0; i < res.rows.length; i++) {
-                  //sloka.push({bab: res.rows.item(i).bab, ayat: res.rows.item(i).ayat, indo: res.rows.item(i).indo, favorit: res.rows.item(i).favorit});
-                  sloka.push(res.rows.item(i));
+                  sloka.push({bab: res.rows.item(i).bab, ayat: res.rows.item(i).ayat, indo: res.rows.item(i).indo, favorit: res.rows.item(i).favorit});
+                  //sloka.push(res.rows.item(i));
                 }
                 
                 //return sloka;
@@ -92,7 +92,7 @@
                 });          
           }
           //console.log(sloka)
-          app.dialog.alert('length of sloka: ' + sloka.length);
+          //app.dialog.alert('length of sloka: ' + sloka.length);
           return sloka;
         },
       }
