@@ -28,7 +28,7 @@
                </div>
                <div class="card-footer"> 
                 <div class="icon-social"><a href="#" class="link icon-only"><i class="material-icons share art-share">share</i></a></div>
-                <div class="icon-social"><a href="#" class="link icon-only"><i class="material-icons fav">favorite</i></a></div>
+                <div class="icon-social"><a href="#" class="link icon-only"><i class="material-icons fav{{#if favorit}} color-change{{/if}}">favorite</i></a></div>
                </div>
             </div>
           </div>
@@ -94,12 +94,25 @@
         },
       }
     },
-    mounted() {
+    /*mounted() {
       // console.log('componentMounted', this);
       var swiper = app.swiper.create('.swiper-container', {
         speed: 400,
         spaceBetween: 0
       });
-    },
+    },*/
+    // Page Events
+    on: {
+      pageMounted: function(e, page) {
+        console.log('pageMounted', page);
+      },
+      pageInit: function(e, page) {
+        
+        var swiper = app.swiper.create('.swiper-container', {
+          speed: 400,
+          spaceBetween: 0
+        });
+      }
+    }
   }
 </script>
