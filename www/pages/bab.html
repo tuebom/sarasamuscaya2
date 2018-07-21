@@ -41,7 +41,7 @@
             
             tx.executeSql('select bab, ayat, sloka, indo, favorit from book where bab = ? order by ayat;', [bab], function(ignored, res) {
               
-              var sloka = [];
+              //var sloka = [];
               
               for (var i = 0; i < res.rows.length; i++) {
                 var html = '<div class="swiper-slide">'
@@ -57,14 +57,16 @@
                        html += '<div class="card-footer">'
                         html += '<div class="icon-social"><a href="#" class="link icon-only"><i class="material-icons share art-share">share</i></a></div>'
                         html += '<div class="icon-social"><a href="#" class="link icon-only"><i class="material-icons fav'
-                        if (res.rows.item(0).favorit)
+                        if (res.rows.item(0).favorit) {
                           html += ' color-change'
+                        }
                         html += '">favorite</i></a></div>'
                        html += '</div>'
                     html += '</div>'
                   html += '</div>'
 
-                sloka.push(html);
+                //sloka.push(html);
+                swiper.appendSlide(html);
               }
             });
           }, function(error) {
@@ -72,7 +74,7 @@
             //app.dialog.alert('select error: ' + error.message);
           });
         }
-        swiper.appendSlide(sloka);
+        //swiper.appendSlide(sloka);
       }
     }
   }
