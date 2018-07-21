@@ -13,26 +13,8 @@
     </div>
     <div class="page-content">
       <img class="responsive" src="img/back.jpg" />
-      <div class="swiper-container swiper-init">
+      <div class="swiper-container">
         <div class="swiper-wrapper">
-          {{#each sloka}}
-          <div class="swiper-slide">
-            <div class="card">
-               <input type="hidden" class="bab" value="{{this.bab}}" />
-               <input type="hidden" class="ayat" value="{{this.ayat}}" />
-               <div class="card-header">
-                  <div class="article-title text-center">Sloka {{this.ayat}}</div>
-               </div>
-               <div class="card-footer">
-                  <div class="intro">{{this.indo}}</div>
-               </div>
-               <div class="card-footer"> 
-                <div class="icon-social"><a href="#" class="link icon-only"><i class="material-icons share art-share">share</i></a></div>
-                <div class="icon-social"><a href="#" class="link icon-only"><i class="material-icons fav{{#if favorit}} color-change{{/if}}">favorite</i></a></div>
-               </div>
-            </div>
-          </div>
-          {{/each}}
         </div>
       </div>
     </div>
@@ -110,7 +92,12 @@
         console.log('pageMounted', page);
       },
       pageInit: function(e, page) {
-        
+        var swiper = app.swiper.get('.swiper-container');
+        swiper.appendSlide([
+   '<div class="swiper-slide">Slide 1</div>',
+   '<div class="swiper-slide">Slide 2</div>'
+]);
+
       }
     }
   }
