@@ -34,6 +34,7 @@
         var db = self.$app.data.db;
         var bab = self.$route.params.anu;
         //console.log('bab: ', bab)
+        self.$app.dialog.alert('bab: ' + bab);
     
         if (db) {
         
@@ -44,34 +45,14 @@
               //var sloka = [];
               
               for (var i = 0; i < res.rows.length; i++) {
-                var html = '<div class="swiper-slide">'
-                    html += '<div class="card">'
-                       html += '<input type="hidden" class="bab" value="' + res.rows.item(0).bab + '" />'
-                       html += '<input type="hidden" class="ayat" value="' + res.rows.item(0).ayat + '" />'
-                       html += '<div class="card-header">'
-                          html += '<div class="article-title text-center">Sloka ' + res.rows.item(0).ayat + '</div>'
-                       html += '</div>'
-                       html += '<div class="card-footer">'
-                          html += '<div class="intro">' + res.rows.item(0).indo + '</div>'
-                       html += '</div>'
-                       html += '<div class="card-footer">'
-                        html += '<div class="icon-social"><a href="#" class="link icon-only"><i class="material-icons share art-share">share</i></a></div>'
-                        html += '<div class="icon-social"><a href="#" class="link icon-only"><i class="material-icons fav'
-                        if (res.rows.item(0).favorit) {
-                          html += ' color-change'
-                        }
-                        html += '">favorite</i></a></div>'
-                       html += '</div>'
-                    html += '</div>'
-                  html += '</div>'
-
+                var html = '<div class="swiper-slide">' + res.rows.item(0).indo + '</div>'
                 //sloka.push(html);
                 swiper.appendSlide(html);
               }
             });
           }, function(error) {
             //app.preloader.hide();
-            //app.dialog.alert('select error: ' + error.message);
+            self.$app.dialog.alert('select error: ' + error.message);
           });
         }
         //swiper.appendSlide(sloka);
