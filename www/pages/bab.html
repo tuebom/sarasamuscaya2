@@ -13,7 +13,7 @@
     </div>
     <div class="page-content">
       <img class="responsive" src="img/back.jpg" />
-      <div class="swiper-container">
+      <div class="swiper-container swiper-init">
         <div class="swiper-wrapper">
           {{#each sloka}}
           <div class="swiper-slide">
@@ -111,11 +111,6 @@
       },
       pageInit: function(e, page) {
         
-        var swiper = app.swiper.create('.swiper-container', {
-          speed: 400,
-          spaceBetween: 0,
-          slidesPerView: 1
-        });
       }
     }
   }
