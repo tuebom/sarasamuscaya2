@@ -11,111 +11,9 @@ routes = [
     path: '/bab/:anu/:title',
     componentUrl: './pages/bab.html',
     /*
-    async: function (routeTo, routeFrom, resolve, reject) {
-      // Router instance
-      var router = this;
-
-      // App instance
-      // var app = router.app;
-      var bab = routeTo.params.index;
-      var judul = routeTo.params.title;
-      // console.log(bab)
-
-      // Show Preloader
-      app.preloader.show();
-      
-     
-      var sloka = [];
-      // var message;
-      
-      sloka.push(    {
-            bab: 1,
-            ayat: 1,
-            indo: 'Anaknda Janamejaya, segala ajaran tentang Catur Warga (Dharma=kebajikan, Artha=kekayaan, Kama=kesenangan dan Moksa=kebebasan) baikpun sumber, maupun uraian tafsirnya ada di sini; segala yang terdapat di sini akan terdapat dalam sastra lain; yang tidak terdapat di sini juga tidak akan terdapat pada sastra lain.',
-            favorit: 0
-          });
-      sloka.push(    {
-            bab: 1,
-            ayat: 2,
-            indo: 'Manusia adalah satu-satunya mahluk yang dapat melakukan kebajikan pun kejahatan. Terlahir menjadi manusia bertujuan untuk melebur perbuatan-perbuatan jahat ke dalam perbuatan-perbuatan bajik, hingga tidak ada lagi perbuatan-perbuatan jahat yang masih tersisa dalam diri, inilah hakekat menjadi manusia. Hanya dengan menjadi manusia kejahatan itu dapat dilebur dalam kebajikan.',
-            favorit: 1
-          });
-
-        // var data = {
-        // title: judul,
-        // sloka: [
-          // {
-            // bab: 1,
-            // ayat: 1,
-            // indo: 'Anaknda Janamejaya, segala ajaran tentang Catur Warga (Dharma=kebajikan, Artha=kekayaan, Kama=kesenangan dan Moksa=kebebasan) baikpun sumber, maupun uraian tafsirnya ada di sini; segala yang terdapat di sini akan terdapat dalam sastra lain; yang tidak terdapat di sini juga tidak akan terdapat pada sastra lain.',
-            // favorit: 0
-          // },
-          // {
-            // bab: 1,
-            // ayat: 2,
-            // indo: 'Manusia adalah satu-satunya mahluk yang dapat melakukan kebajikan pun kejahatan. Terlahir menjadi manusia bertujuan untuk melebur perbuatan-perbuatan jahat ke dalam perbuatan-perbuatan bajik, hingga tidak ada lagi perbuatan-perbuatan jahat yang masih tersisa dalam diri, inilah hakekat menjadi manusia. Hanya dengan menjadi manusia kejahatan itu dapat dilebur dalam kebajikan.',
-            // favorit: 1
-          // },
-        // ]
-      // };
-
-      var db = app.data.db;
-      
-      if (db) {
-      
-        db.transaction(function(tx) {
-          
-          tx.executeSql('select bab, ayat, sloka, indo, favorit from book where bab = ? order by ayat;', [bab], function(ignored, res) {
-            
-            // var sloka = [];
-            for (var i = 0; i < res.rows.length; i++) {
-              sloka.push({bab: res.rows.item(i).bab, ayat: res.rows.item(i).ayat, indo: res.rows.item(i).indo, favorit: res.rows.item(i).favorit});
-            }
-            // var sloka = res.rows.item;
-            // app.dialog.alert('res.rows.length: ' + res.rows.length);
-          });
-        }, function(error) {
-          app.preloader.hide();
-          app.dialog.alert('select error: ' + error.message);
-        });      
-      }
-      
-      var data = {
-        title: judul, sloka: sloka
-      }
-
-      app.preloader.hide();
-      
-      resolve(
-        { componentUrl: './pages/bab.html' },
-        { context: { data: data } }
-      );
-    }, */
-    
     on: {
       pageInit: function (event, page) {
-
-        //var bab = this.route.params.anu;
-        //console.log('bab: ', bab)
-        //app.dialog.alert('bab: ' + bab);
-
-        /*var swiper = app.swiper.create('.swiper-container', {
-            speed: 400,
-        });*/
-        
-        var db = app.data.db;
-        // if (db) {
-          // // app.dialog.alert('Db not defined!');
-          // db.transaction(function(tx) {
-            // tx.executeSql('select indo from book where ayat = 511;', [], function(ignored, res) {
-              // app.dialog.alert('Sloka 1: ' + res.rows.item(0).indo);
-            // });
-          // }, function(error) {
-            // app.dialog.alert('select error: ' + error.message);
-          // });      
-        // }
-      
-        // to do
+     
         $$('i.material-icons.fav').on('click', function (e) {//Changing color icons onclick
           
           $$(this).toggleClass('color-change');
@@ -218,7 +116,7 @@ routes = [
         });
 
       },
-    }
+    }*/
   },
   {
     path: '/favorit/',

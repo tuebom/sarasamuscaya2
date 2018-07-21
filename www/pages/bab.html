@@ -30,35 +30,35 @@
           speed: 400,
         });
 
-        var db = app.data.db;
         var bab = this.$route.params.anu;
         //console.log('bab: ', bab)
         //app.dialog.alert('bab: ' + bab);
+        
         app.preloader.show();
     
+        var db = app.data.db;
+
         if (db) {
         
           db.transaction(function(tx) {
             
             tx.executeSql('select bab, ayat, sloka, indo, favorit from book where bab = ? order by ayat;', [bab], function(ignored, res) {
               
-              //var sloka = [];
-              
               for (var i = 0; i < res.rows.length; i++) {
                 var html = '<div class="swiper-slide">'
                     html += '<div class="card">'
-                       html += '<input type="hidden" class="bab" value="' + res.rows.item(0).bab + '" />'
-                       html += '<input type="hidden" class="ayat" value="' + res.rows.item(0).ayat + '" />'
+                       html += '<input type="hidden" class="bab" value="' + res.rows.item(i).bab + '" />'
+                       html += '<input type="hidden" class="ayat" value="' + res.rows.item(i).ayat + '" />'
                        html += '<div class="card-header">'
-                          html += '<div class="article-title text-center">Sloka ' + res.rows.item(0).ayat + '</div>'
+                          html += '<div class="article-title text-center">Sloka ' + res.rows.item(i).ayat + '</div>'
                        html += '</div>'
                        html += '<div class="card-footer">'
-                          html += '<div class="intro">' + res.rows.item(0).indo + '</div>'
+                          html += '<div class="intro">' + res.rows.item(i).indo + '</div>'
                        html += '</div>'
                        html += '<div class="card-footer">'
                         html += '<div class="icon-social"><a href="#" class="link icon-only"><i class="material-icons share art-share">share</i></a></div>'
                         html += '<div class="icon-social"><a href="#" class="link icon-only"><i class="material-icons fav'
-                        if (res.rows.item(0).favorit) {
+                        if (res.rows.item(i).favorit === '1') {
                           html += ' color-change'
                         }
                         html += '">favorite</i></a></div>'
@@ -74,6 +74,7 @@
           });
         } else {
         
+          /*
           for (var i = 1; i < 11; i++) {
             var html = '<div class="swiper-slide">'
                 html += '<div class="card">'
@@ -88,17 +89,118 @@
                    html += '<div class="card-footer">'
                     html += '<div class="icon-social"><a href="#" class="link icon-only"><i class="material-icons share art-share">share</i></a></div>'
                     html += '<div class="icon-social"><a href="#" class="link icon-only"><i class="material-icons fav'
-                    /*if (res.rows.item(0).favorit) {
+                    //*if (res.rows.item(0).favorit) {
                       html += ' color-change'
-                    }*/
+                    }///
                     html += '">favorite</i></a></div>'
                    html += '</div>'
                 html += '</div>'
               html += '</div>'
             swiper.appendSlide(html);
-          }
+          }//*/
         }
         app.preloader.hide();
+     
+        $$('i.material-icons.fav').on('click', function (e) {//Changing color icons onclick
+          
+          $$(this).toggleClass('color-change');
+          
+          var db = app.data.db;
+          if (db) {
+            
+            var card = $$(this).parents(".card");
+            var bab = card.find('.bab').val();
+            var ayat = card.find('.ayat').val();
+            var value = ($$(this).hasClass('color-change') ? 1 : 0);
+            
+            db.transaction(function(tx) {
+              tx.executeSql('UPDATE book SET favorit = ? WHERE bab = ? and ayat = ?', [value, bab, ayat]);
+            }, function(error) {
+              app.dialog.alert('UPDATE error: ' + error.message);
+            }, function() {
+              // console.log('Sukses!.');
+            });
+          }
+        });
+        
+        $$('i.material-icons.share').on('click', function (e) {//Changing color icons onclick
+          //$$(this).toggleClass('color-change');
+          var card = $$(this).parents(".card");
+          var teks = card.find('.intro').text();
+          // var bab = card.find('.bab').val();
+          var ayat = card.find('.ayat').val();
+          // app.dialog.alert(teks + '<br><br>Bab ' + bab + ' Sloka ' + ayat);
+
+          var ac_share = app.actions.create({
+            buttons: [
+              {
+                text: '<div class="list"><ul><li><div class="item-content">'+
+                '<div class="item-media"><img class="material-icons" src="img/whatsapp.png" /></div>'+
+                '<div class="item-inner">'+
+                  '<div class="item-title-row">'+
+                    '<div class="item-title">Whatsapp</div>'+
+                  '</div>'+
+                  '<div class="item-text"></div>'+
+                '</div>'+
+              '</div></li></ul></div>',
+                onClick: function () {
+                  var msg = teks + '\n\nSarasamuscaya ' + ayat;
+                  window.plugins.socialsharing.shareViaWhatsApp(msg, null, null, null, function(e){
+                    app.dialog.alert('Sharing failed with message: ' + e, 'Sarasamuscaya');
+                  })
+                }
+              },
+              {
+                text: '<div class="list"><ul><li><div class="item-content">'+
+                '<div class="item-media"><img class="material-icons" src="img/telegram.png" /></div>'+
+                '<div class="item-inner">'+
+                  '<div class="item-title-row">'+
+                    '<div class="item-title">Telegram</div>'+
+                  '</div>'+
+                  '<div class="item-text"></div>'+
+                '</div>'+
+              '</div></li></ul></div>',
+                onClick: function () {
+                  var msg = teks + '\n\nSarasamuscaya ' + ayat;
+                  window.plugins.socialsharing.shareVia('org.telegram.messenger', msg, null, null, null, null, function(e){
+                    app.dialog.alert('Sharing failed with message: ' + e, 'Sarasamuscaya');
+                  })
+                }
+              },
+              {
+                text: '<div class="list"><ul><li><div class="item-content">'+
+                '<div class="item-media"><img class="material-icons" src="img/facebook.png" /></div>'+
+                '<div class="item-inner">'+
+                  '<div class="item-title-row">'+
+                    '<div class="item-title">Facebook</div>'+
+                  '</div>'+
+                  '<div class="item-text"></div>'+
+                '</div>'+
+              '</div></li></ul></div>',
+                onClick: function () {
+                  var msg = teks + '\n\nSarasamuscaya ' + ayat;
+                  window.plugins.socialsharing.shareViaFacebook(msg, null, null, null, function(e){
+                    app.dialog.alert('Sharing failed with message: ' + e, 'Sarasamuscaya');
+                  })
+                }
+              },
+              {
+                text: '<div class="list"><ul><li><div class="item-content">'+
+                '<div class="item-media"></div>'+
+                '<div class="item-inner">'+
+                  '<div class="item-title-row">'+
+                    '<div class="item-title">Cancel</div>'+
+                  '</div>'+
+                  '<div class="item-text"></div>'+
+                '</div>'+
+              '</div></li></ul></div>',
+                color: 'red',
+              },
+            ]
+          });
+          
+          ac_share.open();
+        });
       }
     }
   }
