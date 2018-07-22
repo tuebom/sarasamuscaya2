@@ -69,6 +69,41 @@ var app  = new Framework7({
         console.log(err);
       });
       
+      //*
+      //run admob
+      if( /(android)/i.test(navigator.userAgent) ) {
+        this.data.admobid = { // for Android
+          banner: 'ca-app-pub-8720755312345684/2294562251',
+          interstitial: 'ca-app-pub-xxxxxxxxxxxxx/oooooooooooo'
+        };
+      }/* else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {
+        this.data.admobid = { // for iOS
+          banner: 'ca-app-pub-xxxxxxxxxxxxx/oooooooooooo',
+          interstitial: 'ca-app-pub-xxxxxxxxxxxxx/oooooooooooo'
+        };
+      } else {
+        this.data.admobid = { // for Windows Phone
+          banner: 'ca-app-pub-xxxxxxxxxxxxx/oooooooooooo',
+          interstitial: 'ca-app-pub-xxxxxxxxxxxxx/oooooooooooo'
+        };
+      }*/
+     
+      if ( AdMob ) {
+     
+        // this will create a banner on startup
+        AdMob.createBanner( {
+          adId: this.data.admobid.banner,
+          adSize: 'SMART_BANNER',
+          position: AdMob.AD_POSITION.BOTTOM_CENTER,
+          isTesting: true, // TODO: remove this line when release
+          autoShow: false,
+          overlap: false,
+          // offsetTopBar: false,
+          bgColor: 'white'
+        } );
+      }
+      //*/
+      
     },     
   },
   // App routes

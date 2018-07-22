@@ -32,12 +32,12 @@
   <preference name="disable-cursor" value="false"/>
   <preference name="android-minSdkVersion" value="16"/>
   <preference name="android-installLocation" value="auto"/>
-  <preference name="phonegap-version"       value="cli-7.1.0" />
+  <preference name="phonegap-version"       value="cli-6.5.0" />
   <!--<preference name="android-build-tool" value="gradle" />-->
   
   <!-- Plugins -->
-  <!--<plugin name="cordova-plugin-admobpro" source="npm" />
-  <plugin name="cordova-plugin-splashscreen" source="npm" />-->
+  <plugin name="cordova-plugin-admobpro" source="npm" />
+  <!--<plugin name="cordova-plugin-splashscreen" source="npm" />-->
   <plugin name="cordova-plugin-x-socialsharing" source="npm" />
 
   <plugin name="cordova-plugin-console" source="npm" />

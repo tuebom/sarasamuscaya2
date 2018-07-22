@@ -10,7 +10,7 @@ routes = [
   {
     path: '/bab/:anu/:title',
     componentUrl: './pages/bab.html',
-    //*
+    /*
     on: {
       pageInit: function (event, page) {
      

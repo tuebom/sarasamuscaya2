@@ -206,7 +206,107 @@
             swiper.appendSlide(html);
           }//*/
         }
+        
         app.preloader.hide();
+        
+        swiper.find('i.material-icons.fav').on('click', function (e) {//Changing color icons onclick
+          
+          $$(this).toggleClass('color-change');
+          
+          var db = app.data.db;
+          if (db) {
+            
+            var card = $$(this).parents(".card");
+            var bab = card.find('.bab').val();
+            var ayat = card.find('.ayat').val();
+            var value = ($$(this).hasClass('color-change') ? 1 : 0);
+            
+            db.transaction(function(tx) {
+              tx.executeSql('UPDATE book SET favorit ? WHERE bab = ? and ayat = ?', [value, bab, ayat]);
+            }, function(error) {
+              app.dialog.alert('UPDATE error: ' + error.message);
+            }, function() {
+              // console.log('Sukses!.');
+            });
+          }
+        });
+        
+        swiper.find('i.material-icons.share').on('click', function (e) { // Change color icons onclick
+          var card = $$(this).parents(".card");
+          var teks = card.find('.intro').text();
+          var ayat = card.find('.ayat').val();
+          // app.dialog.alert(teks + '<br><br>Bab ' + bab + ' Sloka ' + ayat);
+
+          var ac_share = app.actions.create({
+            buttons: [
+              {
+                text: '<div class="list"><ul><li><div class="item-content">'+
+                '<div class="item-media"><img class="material-icons" src="img/whatsapp.png" /></div>'+
+                '<div class="item-inner">'+
+                  '<div class="item-title-row">'+
+                    '<div class="item-title">Whatsapp</div>'+
+                  '</div>'+
+                  '<div class="item-text"></div>'+
+                '</div>'+
+              '</div></li></ul></div>',
+                onClick: function () {
+                  var msg = teks + '\n\nSarasamuscaya ' + ayat;
+                  window.plugins.socialsharing.shareViaWhatsApp(msg, null, null, null, function(e){
+                    app.dialog.alert('Sharing failed with message: ' + e, 'Sarasamuscaya');
+                  })
+                }
+              },
+              {
+                text: '<div class="list"><ul><li><div class="item-content">'+
+                '<div class="item-media"><img class="material-icons" src="img/telegram.png" /></div>'+
+                '<div class="item-inner">'+
+                  '<div class="item-title-row">'+
+                    '<div class="item-title">Telegram</div>'+
+                  '</div>'+
+                  '<div class="item-text"></div>'+
+                '</div>'+
+              '</div></li></ul></div>',
+                onClick: function () {
+                  var msg = teks + '\n\nSarasamuscaya ' + ayat;
+                  window.plugins.socialsharing.shareVia('org.telegram.messenger', msg, null, null, null, null, function(e){
+                    app.dialog.alert('Sharing failed with message: ' + e, 'Sarasamuscaya');
+                  })
+                }
+              },
+              {
+                text: '<div class="list"><ul><li><div class="item-content">'+
+                '<div class="item-media"><img class="material-icons" src="img/facebook.png" /></div>'+
+                '<div class="item-inner">'+
+                  '<div class="item-title-row">'+
+                    '<div class="item-title">Facebook</div>'+
+                  '</div>'+
+                  '<div class="item-text"></div>'+
+                '</div>'+
+              '</div></li></ul></div>',
+                onClick: function () {
+                  var msg = teks + '\n\nSarasamuscaya ' + ayat;
+                  window.plugins.socialsharing.shareViaFacebook(msg, null, null, null, function(e){
+                    app.dialog.alert('Sharing failed with message: ' + e, 'Sarasamuscaya');
+                  })
+                }
+              },
+              {
+                text: '<div class="list"><ul><li><div class="item-content">'+
+                '<div class="item-media"></div>'+
+                '<div class="item-inner">'+
+                  '<div class="item-title-row">'+
+                    '<div class="item-title">Cancel</div>'+
+                  '</div>'+
+                  '<div class="item-text"></div>'+
+                '</div>'+
+              '</div></li></ul></div>',
+                color: 'red',
+              },
+            ]
+          });
+          
+          ac_share.open();
+        });
      
       }
     }
