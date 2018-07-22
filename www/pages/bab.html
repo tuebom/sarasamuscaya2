@@ -209,7 +209,7 @@
         
         app.preloader.hide();
         
-        swiper.$el.find('i.material-icons.fav').on('click', function (e) {//Changing color icons onclick
+        $('.swiper-container').on('click', 'i.material-icons.fav', function (e) {//Changing color icons onclick
           
           $$(this).toggleClass('color-change');
           
@@ -231,7 +231,7 @@
           }
         });
         
-        swiper.$el.find('i.material-icons.share').on('click', function (e) { // Change color icons onclick
+        $('.swiper-container').on('click', 'i.material-icons.share', function (e) { // Change color icons onclick
           var card = $$(this).parents(".card");
           var teks = card.find('.intro').text();
           var ayat = card.find('.ayat').val();
