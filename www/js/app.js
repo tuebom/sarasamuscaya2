@@ -96,7 +96,7 @@ var app  = new Framework7({
           adSize: 'SMART_BANNER',
           position: AdMob.AD_POSITION.BOTTOM_CENTER,
           isTesting: true, // TODO: remove this line when release
-          autoShow: false,
+          //autoShow: false,
           overlap: false,
           // offsetTopBar: false,
           bgColor: 'white'
