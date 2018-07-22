@@ -260,6 +260,7 @@ p {
 
 .md .block {
   margin: 8px 0;
+  text-align: justify;
 }
 
 .md .list {
