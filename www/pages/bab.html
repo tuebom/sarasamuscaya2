@@ -27,7 +27,7 @@
       pageInit: function(e, page) {
       
         var swiper = app.swiper.create('.swiper-container', {
-          speed: 400,
+          speed: 300,
         });
 
         var bab = this.$route.params.anu;
@@ -45,13 +45,16 @@
             tx.executeSql('select bab, ayat, sloka, indo, favorit from book where bab = ? order by ayat;', [bab], function(ignored, res) {
               
               app.data.totalSloka += res.rows.length;
-
+              
               if (app.data.totalSloka >= 50)
-                AdMob.prepareInterstitial( {
-                  adId: app.data.admobid.interstitial, // Note! use app.data
-                  isTesting: true, // TODO: remove this line when release
-                  autoShow: false
-                } );
+              
+                if(AdMob) {
+                  AdMob.prepareInterstitial( {
+                        adId: app.data.admobid.interstitial, // Note! use app.data
+                        isTesting: true, // TODO: remove this line when release
+                        autoShow: false
+                      } );
+                }
               
               for (var i = 0; i < res.rows.length; i++) {
                 var html = '<div class="swiper-slide">'
@@ -214,11 +217,19 @@
       },
       pageBeforeOut: function (e, page) {
         // to do
-        if (app.data.totalSloka >= 50)
+        if (app.data.totalSloka >= 50) {
+
+          app.data.totalSloka = 0;
+          
           if(AdMob) {
-            app.data.totalSloka = 0;
+            // AdMob.prepareInterstitial( {
+            //       adId: app.data.admobid.interstitial, // Note! use app.data
+            //       isTesting: true, // TODO: remove this line when release
+            //       autoShow: true
+            //     } );
             AdMob.showInterstitial();
           }
+        }
       },
     }
   }
