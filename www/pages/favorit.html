@@ -42,7 +42,7 @@
         
           db.transaction(function(tx) {
             
-            tx.executeSql('select bab, ayat, sloka, indo, favorit from book where favorit = "Y" order by bab, ayat;', [], function(ignored, res) {
+            tx.executeSql('select bab, ayat, sloka, indo, favorit from book where favorit = "1" order by bab, ayat;', [], function(ignored, res) {
               
               for (var i = 0; i < res.rows.length; i++) {
                 var html = '<div class="swiper-slide">'

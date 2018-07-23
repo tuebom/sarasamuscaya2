@@ -210,7 +210,13 @@
         if (app.data.totalSloka >= 50)
           if(AdMob) {
             app.data.totalSloka = 0;
-            AdMob.showInterstitial();
+        
+            AdMob.prepareInterstitial( {
+              adId: this.data.admobid.interstitial,
+              isTesting: true, // TODO: remove this line when release
+              autoShow: true
+            } );
+            //AdMob.showInterstitial();
           }
       },
     }
