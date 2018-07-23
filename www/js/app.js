@@ -102,12 +102,6 @@ var app  = new Framework7({
           // offsetTopBar: false,
           bgColor: 'white'
         } );
-        
-        AdMob.prepareInterstitial( {
-          adId: this.data.admobid.interstitial,
-          isTesting: true, // TODO: remove this line when release
-          autoShow: false
-        } );
       }
       //*/
       
