@@ -45,6 +45,13 @@
             tx.executeSql('select bab, ayat, sloka, indo, favorit from book where bab = ? order by ayat;', [bab], function(ignored, res) {
               
               app.data.totalSloka += res.rows.length;
+
+              if (app.data.totalSloka >= 50)
+                AdMob.prepareInterstitial( {
+                  adId: app.data.admobid.interstitial, // Note! use app.data
+                  isTesting: true, // TODO: remove this line when release
+                  autoShow: false
+                } );
               
               for (var i = 0; i < res.rows.length; i++) {
                 var html = '<div class="swiper-slide">'
@@ -210,13 +217,7 @@
         if (app.data.totalSloka >= 50)
           if(AdMob) {
             app.data.totalSloka = 0;
-        
-            AdMob.prepareInterstitial( {
-              adId: app.data.admobid.interstitial, // Note! use app.data
-              isTesting: true, // TODO: remove this line when release
-              autoShow: true   // no need showInterstitial()
-            } );
-            //AdMob.showInterstitial();
+            AdMob.showInterstitial();
           }
       },
     }

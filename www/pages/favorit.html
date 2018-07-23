@@ -44,6 +44,12 @@
             
             tx.executeSql('select bab, ayat, sloka, indo, favorit from book where favorit = "1" order by bab, ayat;', [], function(ignored, res) {
               
+              if (res.rows.length === 0) {
+                app.preloader.hide();
+                app.dialog.alert('Belum ada sloka favorit pilihan anda.');
+                return;
+              }
+              
               for (var i = 0; i < res.rows.length; i++) {
                 var html = '<div class="swiper-slide">'
                     html += '<div class="card">'
