@@ -147,7 +147,7 @@
                 onClick: function () {
                   var msg = teks + '\n\nSarasamuscaya ' + ayat;
                   //window.plugins.socialsharing.shareViaFacebook(msg, null, null, null, function(e){
-                  window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint(msg, null, null, null, function(e){
+                    window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint(msg, null, null, 'Paste sloka favorit anda!', null, function(e){
                     app.dialog.alert('Sharing failed with message: ' + e, 'Sarasamuscaya');
                   })
                 }

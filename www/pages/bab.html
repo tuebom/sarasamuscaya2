@@ -181,7 +181,7 @@
                 onClick: function () {
                   var msg = teks + '\n\nSarasamuscaya ' + ayat;
                   //window.plugins.socialsharing.shareViaFacebook(msg, null, null, null, function(e){
-                  window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint(msg, null, null, null, function(e){
+                  window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint(msg, null, null, 'Paste pesan sloka anda!', null, function(e){
                     app.dialog.alert('Sharing failed with message: ' + e, 'Sarasamuscaya');
                   })
                 }
@@ -205,16 +205,16 @@
         });
      
       },
-      pageAfterOut: function (e, page) {
+      pageBeforeOut: function (e, page) {
         // to do
         if (app.data.totalSloka >= 50)
           if(AdMob) {
             app.data.totalSloka = 0;
         
             AdMob.prepareInterstitial( {
-              adId: this.data.admobid.interstitial,
+              adId: app.data.admobid.interstitial, // Note! use app.data
               isTesting: true, // TODO: remove this line when release
-              autoShow: true
+              autoShow: true   // no need showInterstitial()
             } );
             //AdMob.showInterstitial();
           }

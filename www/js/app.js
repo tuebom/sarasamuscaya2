@@ -174,9 +174,10 @@ var ac_share = app.actions.create({
       '</div>'+
     '</div></li></ul></div>',
       onClick: function () {
-        var msg = 'Download aplikasi Sarasamuscaya di Playstore.\n\n' +
-        'https://play.google.com/store/apps/details?id=com.app.sarasamuscaya';
-        window.plugins.socialsharing.shareViaFacebook(msg, null, null, null, function(e){
+        var msg = 'Download aplikasi Sarasamuscaya di Playstore.';
+        // 'https://play.google.com/store/apps/details?id=com.app.sarasamuscaya';
+        // window.plugins.socialsharing.shareViaFacebook(msg, null, null, null, function(e){
+        window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint(msg, null, 'https://play.google.com/store/apps/details?id=com.app.sarasamuscaya', 'Paste pesan anda!', null, function(e){
           app.dialog.alert('Sharing failed with message: ' + e, 'Sarasamuscaya');
         })
       }
