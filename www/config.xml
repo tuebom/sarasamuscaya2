@@ -36,7 +36,7 @@
   <!--<preference name="android-build-tool" value="gradle" />-->
   
   <!-- Plugins -->
-  <!--<plugin name="cordova-plugin-admobpro" source="npm" />
+  <!--<plugin name="cordova-plugin-admobpro" source="npm" />-->
   <!--<plugin name="cordova-plugin-splashscreen" source="npm" />-->
   <plugin name="cordova-plugin-x-socialsharing" source="npm" />
 
