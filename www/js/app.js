@@ -18,7 +18,7 @@ var app  = new Framework7({
   data: function () {
     return {
       db: null,
-      push: null,
+      totalSloka: 0,
       admobid: {}
     };
   },
@@ -74,7 +74,7 @@ var app  = new Framework7({
       if( /(android)/i.test(navigator.userAgent) ) {
         this.data.admobid = { // for Android
           banner: 'ca-app-pub-8720755312345684/2294562251',
-          interstitial: 'ca-app-pub-xxxxxxxxxxxxx/oooooooooooo'
+          interstitial: 'ca-app-pub-8720755312345684/3086731912'
         };
       } else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {
         this.data.admobid = { // for iOS
@@ -101,6 +101,12 @@ var app  = new Framework7({
           overlap: false,
           // offsetTopBar: false,
           bgColor: 'white'
+        } );
+        
+        AdMob.prepareInterstitial( {
+          adId: this.data.admobid.interstitial,
+          isTesting: true, // TODO: remove this line when release
+          autoShow: false
         } );
       }
       //*/
@@ -210,7 +216,9 @@ $$(document).on('backbutton', function (e) {
     if (isRated !== 'Y') {
       app.dialog.confirm('Jika anda menyukai aplikasi ini, mohon luangkan waktu anda untuk memberi rate aplikasi di Play Store.', function () {
         localStorage.setItem('rated', 'Y');
-        mainView.router.navigate('https://play.google.com/store/apps/details?id=com.app.sarasamuscaya');
+        //mainView.router.navigate('https://play.google.com/store/apps/details?id=com.app.sarasamuscaya');
+        //window.open("https://play.google.com/store/apps/details?id=com.app.sarasamuscaya", '_system') //ios
+        navigator.app.loadUrl("https://play.google.com/store/apps/details?id=com.app.sarasamuscaya", {openExternal : true}) //android
         // navigator.app.exitApp();
       },  function () {
         navigator.app.exitApp();

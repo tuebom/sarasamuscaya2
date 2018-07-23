@@ -8,7 +8,7 @@
             <span class="ios-only">Back</span>
           </a>
         </div>
-        <div class="title">{{$route.params.title}}</div>
+        <div class="title">Sloka Favorit</div>
       </div>
     </div>
     <div class="page-content">
@@ -30,7 +30,7 @@
           speed: 400,
         });
 
-        var bab = this.$route.params.anu;
+        //var bab = this.$route.params.anu;
         //console.log('bab: ', bab)
         //app.dialog.alert('bab: ' + bab);
         
@@ -42,9 +42,7 @@
         
           db.transaction(function(tx) {
             
-            tx.executeSql('select bab, ayat, sloka, indo, favorit from book where bab = ? order by ayat;', [bab], function(ignored, res) {
-              
-              app.data.totalSloka += res.rows.length;
+            tx.executeSql('select bab, ayat, sloka, indo, favorit from book where favorit = "Y" order by bab, ayat;', [], function(ignored, res) {
               
               for (var i = 0; i < res.rows.length; i++) {
                 var html = '<div class="swiper-slide">'
@@ -59,11 +57,6 @@
                        html += '</div>'
                        html += '<div class="card-footer">'
                         html += '<div class="icon-social"><a href="#" class="link icon-only"><i class="material-icons share">share</i></a></div>'
-                        html += '<div class="icon-social"><a href="#" class="link icon-only"><i class="material-icons fav'
-                        if (res.rows.item(i).favorit === '1') {
-                          html += ' color-change'
-                        }
-                        html += '">favorite</i></a></div>'
                        html += '</div>'
                     html += '</div>'
                   html += '</div>'
@@ -89,12 +82,7 @@
                       html += '<div class="intro">Sloka' + i + '</div>'
                    html += '</div>'
                    html += '<div class="card-footer">'
-                    html += '<div class="icon-social"><a href="#" class="link icon-only" @click="shareArticle"><i class="material-icons share">share</i></a></div>'
-                    html += '<div class="icon-social"><a href="#" class="link icon-only" @click="toggleFav"><i class="material-icons fav'
-                    //*if (res.rows.item(0).favorit) {
-                      html += ' color-change'
-                    }///
-                    html += '">favorite</i></a></div>'
+                      html += '<div class="icon-social"><a href="#" class="link icon-only"><i class="material-icons share">share</i></a></div>'
                    html += '</div>'
                 html += '</div>'
               html += '</div>'
@@ -103,28 +91,6 @@
         }
         
         app.preloader.hide();
-        
-        $$('.swiper-container').on('click', 'i.material-icons.fav', function (e) {//Changing color icons onclick
-          
-          $$(this).toggleClass('color-change');
-          
-          var db = app.data.db;
-          if (db) {
-            
-            var card = $$(this).parents(".card");
-            var bab = card.find('.bab').val();
-            var ayat = card.find('.ayat').val();
-            var value = ($$(this).hasClass('color-change') ? 1 : 0);
-            
-            db.transaction(function(tx) {
-              tx.executeSql('UPDATE book SET favorit = ? WHERE bab = ? and ayat = ?', [value, bab, ayat]);
-            }, function(error) {
-              app.dialog.alert('UPDATE error: ' + error.message);
-            }, function() {
-              // console.log('Sukses!.');
-            });
-          }
-        });
         
         $$('.swiper-container').on('click', 'i.material-icons.share', function (e) { // Change color icons onclick
           var card = $$(this).parents(".card");
@@ -204,15 +170,7 @@
           ac_share.open();
         });
      
-      },
-      pageAfterOut: function (e, page) {
-        // to do
-        if (app.data.totalSloka >= 50)
-          if(AdMob) {
-            app.data.totalSloka = 0;
-            AdMob.showInterstitial();
-          }
-      },
+      }
     }
   }
 </script>
