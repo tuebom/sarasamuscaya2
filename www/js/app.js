@@ -69,7 +69,7 @@ var app  = new Framework7({
         console.log(err);
       });
       
-      //*
+      /*
       //run admob
       if( /(android)/i.test(navigator.userAgent) ) {
         this.data.admobid = { // for Android
